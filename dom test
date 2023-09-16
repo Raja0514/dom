@@ -1,0 +1,117 @@
+
+//async function always return Promise
+//async function wrapped into promise even we return the value
+
+
+// let p= new Promise(function(resolve,reject){
+	
+	// setTimeout(()=>{
+		
+		// resolve("promise resolved")
+	// },10000)
+// }
+// )
+
+// let p1= new Promise(function(resolve,reject){
+	
+	// setTimeout(()=>{
+		
+		// resolve("promise resolved")
+	// },10000)
+// }
+// )
+
+
+// async function getdata(){
+	
+	// return "welcome"
+	
+
+	
+// }
+
+
+// let promise= getdata();
+
+// console.log(promise);
+
+
+// async function getdata(){
+	
+	// const test=await p;
+	// console.log("welcome to oman")
+	// console.log(test)
+// }
+
+// getdata();
+
+
+
+async function getpost(){
+	
+	try{
+		
+	const res=await fetch('https://jsonplaceholder.typicode.com/posts')
+	const jsondata = await res.json();
+	
+	console.log(jsondata)
+	
+	jsondata.map(({userId,id,title,body})=>{
+		
+		console.log(`
+		
+		${userId}
+		${id}
+		${title}
+		${body}
+		
+		`)
+	})
+		
+	const dom1=document.createElement("div")
+	
+	console.log(dom1);
+	
+	
+	const mappedUsers = jsondata.map((user, index) => {
+		
+
+		
+  return `<div>
+                 
+                <div class="test">
+                 <h5>User id: ${user.userId}</h5>
+                 <h5>id:${user.id}</h5>
+                 <h5>Title:${user.title}</h5>
+				 <h5>Body:${user.body}</h5>
+               </div>
+          </div>`;
+});
+	
+	
+	dom1.innerHTML= mappedUsers;
+	
+		
+	document.body.appendChild(dom1)
+	
+	
+	
+	}
+	
+	
+	
+	catch(err){
+		
+		console.log(err)
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+}
+
+getpost();
